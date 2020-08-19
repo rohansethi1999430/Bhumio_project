@@ -4,6 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
+  #mydiv{
+    display: none;
+  }
   ul{
     float: right;
     list-style-type: none;
@@ -172,24 +176,31 @@ tr:nth-child(even) {
 
     </div>
       <center>
-        <form action="#" class="container">
-          <h1>Sign Up</h1>
-          <ul class="ul1">
-            <li><label for="Name">Enter Name:</label></li>
-            <li><input type="text" name="name" size="12" placeholder="Enter Name" id ="name"/></li><br>
-            <li><label for="email">Email Id:</label></li>
-            <li><input type="email" name="email" size="12" placeholder="Enter Email" id="email"/></li><br>
-            
-          </ul>
-          <button type="submit" class="btn1" onclick="display()"  >Submit</button>
-        </form>
+        <div id="mydiv">
+          <form action="#" class="container" onsubmit="return mySubmitFunction(event)">
+            <h1>Sign Up</h1>
+            <ul class="ul1">
+              <li><label for="Name">Enter Name:</label></li>
+              <li><input type="text" name="name" size="12" placeholder="Enter Name" id ="name"/></li><br>
+              <li><label for="email">Email Id:</label></li>
+              <li><input type="email" name="email" size="12" placeholder="Enter Email" id="email"/></li><br>
+              
+            </ul>
+            <button type="submit" class="btn1" onclick="display()"  >Submit</button>
+          </form>
+        </div>
+      </div>
       </center>
       <center>
+        <button type="submit" class="btn1" id="add" onclick="display_form()"  >Add User</button>
         <table id = "display">
           <tr>
             <th>No.</th>
             <th>Name</th>
             <th>Email</th>
+          </tr>
+          <tr id="nodata">
+            <td><center>No Data</center></td>
           </tr>
         </table>
       </center>
@@ -198,10 +209,23 @@ tr:nth-child(even) {
 
 var row = 1;
 
+function display_form(){
+  var mydiv =document.getElementById("mydiv");
+  var mybtn =document.getElementById("add");
+  mydiv.style.display="block";
+  mybtn.style.display="none";
+
+  
+
+}
+function mySubmitFunction(e) {  e.preventDefault();  return false;}
+
 function display(){
     var number=row;
     var name=document.getElementById("name").value;
     var email=document.getElementById("email").value;
+
+ 
 
 if(!name || ! email){
     alert("Please fill Complete Details!!");
@@ -209,6 +233,9 @@ if(!name || ! email){
 }
 var display=document.getElementById("display");
 var newrow = display.insertRow(row);
+var nodata=document.getElementById("nodata");
+
+nodata.style.display="none";
 
 var cell1=newrow.insertCell(0);
 var cell2=newrow.insertCell(1);
