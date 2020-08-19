@@ -130,6 +130,21 @@ input[type=text]:focus, input[type=email]:focus {
 .btn1:hover {
   opacity: 1;
 }
+.btn2 {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  
+  opacity: 0.9;
+  margin: 20px 25%;
+  border-radius: 30px;
+}
+
+.btn2:hover {
+  opacity: 1;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -192,7 +207,7 @@ tr:nth-child(even) {
       </div>
       </center>
       <center>
-        <button type="submit" class="btn1" id="add" onclick="display_form()"  >Add User</button>
+        <button type="submit" class="btn2" id="add" onclick="display_form()"  >Add User</button>
         <table id = "display">
           <tr>
             <th>No.</th>
@@ -224,8 +239,8 @@ function display(){
     var number=row;
     var name=document.getElementById("name").value;
     var email=document.getElementById("email").value;
-
- 
+    var mydiv=document.getElementById("mydiv");
+    var mybtn =document.getElementById("add");
 
 if(!name || ! email){
     alert("Please fill Complete Details!!");
@@ -245,7 +260,9 @@ cell1.innerHTML=row;
 cell2.innerHTML=name;
 cell3.innerHTML=email;
 row++;
-
+mydiv.style.display="none";
+mybtn.style.display="block";
+ 
 
 
 }
